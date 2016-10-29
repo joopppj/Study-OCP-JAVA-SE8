@@ -67,7 +67,8 @@ public class AdvancedStream{
 		Map<Boolean, Set<String>> map6=strings6.collect(Collectors.partitioningBy(n->n.startsWith("x"),Collectors.toSet()));
 		System.out.print("\n"+ map6); // output  {false=[zero, KIRA, kira], true=[]}
 		// we cannot change our map type using partitioningBy
-		// we can also use Collectors.counting() to get something like {false=3, true=0}
+		// we can also use Collectors.counting() to get something like {false=3, true=0} + also, one important difference between grouping and partitioning is grouping only return necessary keys while partitioning always give true and false as keys!
+		
 		
 		// we can even use maping to show more complicated logic:
 		// we group strings by their lengths and then for every value we show the min value of first charactors of all strings
