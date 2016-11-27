@@ -59,6 +59,13 @@ public class WorkWithStream{
 			System.out.println(record);
 		}
 		writeFile(data,destination);
+		// print stream and PrintWriter can write object to text-based out put stream , they are extremely convenient to use in practice 
+		// a good sample PrintWriter application can look like this:
+		try(PrintWriter out= new PrintWriter(new BufferedWriter(new FileWriter(datafile)))){
+			out.print("game start");
+			out.println();
+			out.printf("game over");
+		}
 	}
 	
 }
