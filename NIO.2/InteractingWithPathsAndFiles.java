@@ -11,6 +11,7 @@ public class InteractingWithPathsAndFiles{
 	for(int i=0;i<path1.getNameCount();i++){  // this method provide number of components of this path 
 		System.out.println("component"+i+": "+path1.getName(i)); 
 	}
+		//other path method 
 	}
 	
 }
