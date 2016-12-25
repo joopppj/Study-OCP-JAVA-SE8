@@ -17,5 +17,24 @@ public class ConnectingDatabase{
 		//in order to run sql on database, we need to tell  a Obeject called Statement .
 		// get a statement from a database is very easy
 		Statement stmt=conn.createStatement();
+		
+		// another signature takes two parameters 
+		//Statement stmt2=conn.createStatement(resultSetType, resultSetConcurrency)
+		
+		// then we use the method executeUpdate() on the stmt , it takes sql query as parameter and run it on database. it returns the number of rows that are affected
+		stmt.executeUpdate("insert into zoo values(10, 'pig','3')");
+		// another method called execute() which can handle both query and update
+		// if the parameter is select(query) , then it will return ture , otherwise (update)it returns false
+		boolean isResultSet=stmt.execute(" any sql");
+		if(isResultSet){
+			ResultSet rs =stmt.getResultSet();
+			// it shows the parameter is select query
+		}
+		else if(!isResultSet){
+			int res= stmt.getUpdateCount();
+			// it shows the parameter is an upadate query
+		}
+		
+		// if we have a mismatch between method and query type such as select-executeUpdate()/ delete-executeResultSet() , we will get exception. 
 	}
 }
