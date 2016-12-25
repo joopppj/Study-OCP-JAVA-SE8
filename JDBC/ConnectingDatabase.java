@@ -13,5 +13,9 @@ public class ConnectingDatabase{
 		//Class.forName(className); forName method can check if jar file includes such a driver file.
 		Connection conn=DriverManager.getConnection("type your URL");
 		System.out.println(conn);
+		
+		//in order to run sql on database, we need to tell  a Obeject called Statement .
+		// get a statement from a database is very easy
+		Statement stmt=conn.createStatement();
 	}
 }
