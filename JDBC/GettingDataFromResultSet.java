@@ -24,5 +24,22 @@ public class GettingDataFromResultSet{
 			
 		}
 		
+		// There is another type of statement , scroll type. as you see above, the default type of statement is forward-inly, which means you can only access the line which is next to the current line.
+		// while scroll type allows you go to any line of resultSset 
+		Statement stmt1=conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+		ResultSet rs= stmt1.executeQuery("any select sql");
+		rs.afterLast();// the method afterLast() can move pointer to point to the position after the last line .
+		rs.beforeFirst();// the method afterLast() can move pointer to point to the line before the first line.
+		rs.previous(); // the method previous() can move the pointer to point to previous line .(which is opposite to next())
+		rs.first(); // the method first() can move the pointer to point to first line.
+		rs.last(); // the method last() can move the pointer to point to last line.
+		rs.absolute(5);// absolute() can help us access any line of resultSet. E.X : we access 5th line here.
+		rs.absolute(-1);// absolute() can also take negative number, which count from last line.E.X: we access last line here.
+		rs.relative(-2); // relative() can move the pointer to the position that relative to current line.E.X: we move the pointer two row backward here .
+		
+		// like file , we also need to close database after we use it, try-with-resources can automatically close all resources. 
+		// the closing order is normally  ResultSet -> Statement -> Connection
+		// but we can also close Connection/Statement directly, it will close ResultSet/ResultSet and Stament automatically. 
+		// another important rule is that , JDBC automatically close a ResultSet when running another sql from the same Statement
 	}
 }
