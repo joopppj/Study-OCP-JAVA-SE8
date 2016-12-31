@@ -23,6 +23,11 @@ class lion extends Animal{
 	public String toString(){  // there is a good third party library for us to use to implement toString()
 		return ToStringBuilder.reflectionToString(this,ToStringStyle.SHORT_PREFIX_STYLE);
 	}
+	public boolean equals(Object obj){
+		if(!(obj instanceof lion))return false;		//instanceof can help us to check if an object is instance of this type,if not ,there is no way for them to be equal
+		lion lio=(lion)obj;
+		return lio.name.equals("name");
+	}
 }
 
 public class Basics{
