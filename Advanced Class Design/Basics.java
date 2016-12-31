@@ -28,6 +28,11 @@ class lion extends Animal{
 		lion lio=(lion)obj;
 		return lio.name.equals("name");
 	}
+	public int hashCode(){
+		return name.hashCode();  
+	}
+	// hash code has more rules to follow: 1. the values it use must be subset of equals() 2 the value in hashCode() should not change 3 if equals() return true, hashCode() should also return equals() 
+
 }
 
 public class Basics{
