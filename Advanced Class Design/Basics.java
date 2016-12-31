@@ -9,10 +9,11 @@ abstract class Animal{
 }
 class lion extends Animal{
 	String name="lion";
+	@Override     // @ symbol means annotation , override means this method has overridden version 
 	public void printName(){
 		System.out.println(name);
 	}
-	public void pet(){
+	@Override public void pet(){  // the annotation can also be wrote in this position . 
 		System.err.println("you cannot pet a lion");
 	}
 }
