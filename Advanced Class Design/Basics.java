@@ -1,4 +1,7 @@
-abstract class Animal{
+import org.apache.commons.lang3.*;
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
+class Animal{
 	String name="???";
 	public void printName(){
 		System.out.println(name);
@@ -13,8 +16,12 @@ class lion extends Animal{
 	public void printName(){
 		System.out.println(name);
 	}
+	
 	@Override public void pet(){  // the annotation can also be wrote in this position . 
 		System.err.println("you cannot pet a lion");
+	}
+	public String toString(){  // there is a good third party library for us to use to implement toString()
+		return ToStringBuilder.reflectionToString(this,ToStringStyle.SHORT_PREFIX_STYLE);
 	}
 }
 
