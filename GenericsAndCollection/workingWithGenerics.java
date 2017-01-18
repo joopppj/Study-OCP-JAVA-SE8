@@ -1,4 +1,7 @@
 package test;
+
+import java.util.List;
+
 // the syntax for introducing a generic is to declare a formal type parameter inangle brackets
 // we can contain multiple generic values
  class crate<T,S>{
@@ -16,6 +19,10 @@ package test;
 	 *N for a number
 	 *T for generic data type
 	 */
+	// not only interface/class, generics can also be declared on method level
+	public static <T> T genericMethod(T t){
+		return t;
+	}
 	public static void  main(String[] args){
 		String animal="animal";
 		crate<String,String> CrateForString = new crate<>();
@@ -37,3 +44,11 @@ class workingWithGenerics2<T> implements workingWithGenerics{
 class workingWithGenerics3 implements workingWithGenerics{
 }
 // something generic types cannot do: 1. call new T() 2 create an array of T 3 call instanceof 4 Use primitive type as generic type parameter 5 create a static variable as a generic type parameter
+// a bounded parameter type is an unknown generic that specify a bound for the generic, and there are 3 kinds of bound.
+class bound{
+//1 unbounded wildcard  , by unbounded , we mean the generic can be any type.
+public static void unboundedPrint(List<?> list){ //this methods can take any generic type arraylist as parameter.
+	for(Object x: list)System.out.println(x);  
+}
+      
+}
