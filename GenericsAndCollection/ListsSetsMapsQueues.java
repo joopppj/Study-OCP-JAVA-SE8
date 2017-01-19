@@ -3,11 +3,14 @@ package test;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import java.util.Queue;
 import java.util.Set;
+import java.util.TreeMap;
 import java.util.TreeSet;
 
 public class ListsSetsMapsQueues{
@@ -30,5 +33,18 @@ public class ListsSetsMapsQueues{
 		ArrayDeque<Integer> queue=new ArrayDeque<>();
 		queue.offer(1);queue.offer(2);queue.poll();// use deque like a queue first-in first-out
 		queue.push(1);queue.push(2);queue.poll();// use deque like a queue first-in last-out
+	
+		// Map: it is used when you want to identify values by a key and map does not implement Collection interface so its methods are very different.
+		Map<String,String> map=new HashMap<>();
+		map.put("koala", "bamboo");
+		String food=map.get("koala");//bamboo
+		// TreeMap gives us a map with sorted keys, but put() and get will cost logn
+		Map<String,String> treeMap= new TreeMap<>();
+		treeMap.put("B", "bob"); treeMap.put("A","apple");
+		for(String key:treeMap.keySet())System.out.println(key); // it outputs A,B (the sorted keys)
+		
+		// another thing worth mentioning is null value, all tree collections like treeSet and treeMap cannot includes null since you cannot compare null with other keys when sorting keys.
+		// arrayDeque cannot includes null either since it already used null as special value when it is empty
+		
 	}
 }
