@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
 
 public class ComparatorAndComparable{
 	// if we want to make an object comparable , we should let it implement Comparable then override compareTo()
@@ -26,7 +28,7 @@ public class ComparatorAndComparable{
 		}
 		
 	}
-	
+	public class notComparable{}
 	
 	// compareTo() and equals() may not be consistent. So we need comparator 
 	public static void main(String[] args){
@@ -48,5 +50,15 @@ public class ComparatorAndComparable{
 		//Comparator<Duck> byWeight=(d1,d2)->d1.getWeight()-d2.getWeight();
 		Collections.sort(ducks,byWeight); // then use a overload version of sort method. 
 		System.out.println(ducks);
+		Collections.binarySearch(ducks, new ComparatorAndComparable().new Duck("A"),byWeight);// same thing can happen in binarySearch method
+		
+		List<notComparable> list= new ArrayList<>();
+		list.add(new ComparatorAndComparable().new notComparable());
+		//Collections.sort(list); // this does not compile since sort() method with one parameter cannot be used on object that is not comparable.
+		// an interesting thing is about tree collection. it does compile when adding uncomparable elements.but it will throw exception at runtime.
+		Set<notComparable> wrong= new TreeSet<>() ;
+		wrong.add( new ComparatorAndComparable().new notComparable()); // this throw exception.
+		// but we can add comparator to TreeSet when initializing it .
+		// Set<notComparable> wrong= new TreeSet<>(anyComparator) ;
 	}
 }
